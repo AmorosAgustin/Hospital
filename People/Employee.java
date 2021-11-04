@@ -3,7 +3,6 @@ package People;
 public abstract class Employee extends People {
 
 
-
     private int ID;
 
     public Employee() {
@@ -31,8 +30,8 @@ public abstract class Employee extends People {
 
     @Override
     public String toString() {
-        return  "Name= '" + this.getName() + '\'' +
+        return "Name= '" + this.getName() + '\'' +
                 ", Surname= '" + this.getSurname() + '\'' +
-                ", ID= " + ID +"\n";
+                ", ID= " + ID + "\n";
     }
 }

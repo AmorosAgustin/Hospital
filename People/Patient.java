@@ -3,23 +3,23 @@ package People;
 import Room.Room;
 import Room.Reception;
 
-public class Patient extends People{
+public class Patient extends People {
     private int insuranceNumber;
     private Room locationRoom;
 
-    public Patient(){
+    public Patient() {
         super();
         this.locationRoom = null;
         this.insuranceNumber = 0000000000;
     }
 
-    public Patient(String name, String surname, int insuranceNumber)
-    {
+    public Patient(String name, String surname, int insuranceNumber) {
         super(name, surname);
         this.insuranceNumber = insuranceNumber;
         this.locationRoom = null;
 
     }
+
     public Patient(String name, String surname, int insuranceNumber, Room locationRoom) {
         super(name, surname);
         this.insuranceNumber = insuranceNumber;
@@ -46,14 +46,12 @@ public class Patient extends People{
         this.locationRoom = locationRoom;
     }
 
-    public void arrive(Reception reception)
-    {
+    public void arrive(Reception reception) {
         this.locationRoom = reception;
 
     }
 
-    public void leave()
-    {
+    public void leave() {
         this.locationRoom = null;
 
     }
@@ -63,13 +61,12 @@ public class Patient extends People{
         if (locationRoom != null) {
             return "Name= '" + this.getName() + '\'' +
                     ", Surname= '" + this.getSurname() + '\'' +
-                "Insurance Number= " + insuranceNumber + ", Room= " + locationRoom.getRoomID()+"\n" ;
+                    "Insurance Number= " + insuranceNumber + ", Room= " + locationRoom.getRoomID() + "\n";
 
-        }
-        else{
-            return  "Name= '" + this.getName() + '\'' +
+        } else {
+            return "Name= '" + this.getName() + '\'' +
                     ", Surname= '" + this.getSurname() + '\'' +
-                    ", Insurance Number= " + insuranceNumber + ", Room= None \n" ;
+                    ", Insurance Number= " + insuranceNumber + ", Room= None \n";
 
         }
 

@@ -69,23 +69,20 @@ public class Runner {
         intensiveCareUnit1.getAssignedEmployee().add(nurse1);
 
 
-
         bedroom1.setBed(bed1);
         bed1.setLocationRoom(bedroom1);
         bedroom1.getAssignedEmployee().add(nurse2);
 
 
-        Bed bed2 = new Bed(true, bedroom2, 000001, false,"Bed" ,2);
+        Bed bed2 = new Bed(true, bedroom2, 000001, false, "Bed", 2);
         bedroom2.setBed(bed2);
 
         bedroom2.getAssignedEmployee().add(nurse1);
 
-        ECG ecg1=new ECG(true,examRoom1,3,"ECG Machine",false);
-        Bed bed3=new Bed(true,intensiveCareUnit1,4,false,"Bed",0);
+        ECG ecg1 = new ECG(true, examRoom1, 3, "ECG Machine", false);
+        Bed bed3 = new Bed(true, intensiveCareUnit1, 4, false, "Bed", 0);
         intensiveCareUnit1.setBed(bed3);
         examRoom1.setAssignedEquipment(ecg1);
-
-
 
 
         hospital1.getEquipment().add(bed1);
@@ -105,21 +102,21 @@ public class Runner {
         patient3.arrive(reception1);
         patient4.arrive(reception1);
 
-        receptionist1.addToPatientList(patient1,hospital1);
-        receptionist1.addToPatientList(patient2,hospital1);
-        receptionist1.addToPatientList(patient3,hospital1);
-        receptionist1.addToPatientList(patient4,hospital1);
+        receptionist1.addToPatientList(patient1, hospital1);
+        receptionist1.addToPatientList(patient2, hospital1);
+        receptionist1.addToPatientList(patient3, hospital1);
+        receptionist1.addToPatientList(patient4, hospital1);
 
-        receptionist1.addToEmployeeList(doctor1,hospital1);
-        receptionist1.addToEmployeeList(doctor2,hospital1);
-        receptionist1.addToEmployeeList(nurse1,hospital1);
-        receptionist1.addToEmployeeList(nurse2,hospital1);
-        receptionist1.addToEmployeeList(receptionist1,hospital1);
+        receptionist1.addToEmployeeList(doctor1, hospital1);
+        receptionist1.addToEmployeeList(doctor2, hospital1);
+        receptionist1.addToEmployeeList(nurse1, hospital1);
+        receptionist1.addToEmployeeList(nurse2, hospital1);
+        receptionist1.addToEmployeeList(receptionist1, hospital1);
 
-        nurse1.movePatient(patient1,bedroom1);
-        nurse2.movePatient(patient2,bedroom2);
-        nurse1.movePatient(patient3,examRoom1);
-        nurse2.movePatient(patient4,intensiveCareUnit1);
+        nurse1.movePatient(patient1, bedroom1);
+        nurse2.movePatient(patient2, bedroom2);
+        nurse1.movePatient(patient3, examRoom1);
+        nurse2.movePatient(patient4, intensiveCareUnit1);
 
         doctor1.performSurgery();
 

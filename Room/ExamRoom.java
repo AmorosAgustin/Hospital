@@ -5,20 +5,21 @@ import People.Employee;
 
 import java.util.List;
 
-public class ExamRoom extends Room{
+public class ExamRoom extends Room {
 
 
     private Equipment assignedEquipment;
 
-    public ExamRoom(){
+    public ExamRoom() {
         super();
-        this.assignedEquipment=null;
+        this.assignedEquipment = null;
     }
 
-    public ExamRoom(int roomID){
+    public ExamRoom(int roomID) {
         super(roomID);
-        this.assignedEquipment=null;
+        this.assignedEquipment = null;
     }
+
     public ExamRoom(Equipment assignedEquipment) {
         super();
         this.assignedEquipment = assignedEquipment;

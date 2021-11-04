@@ -12,11 +12,12 @@ public class Hospital {
     private List<Equipment> equipment;
 
 
-    public Hospital(){
+    public Hospital() {
         this.rooms = new ArrayList<Room>();
         this.database = new Database();
         this.equipment = new ArrayList<Equipment>();
     }
+
     public Hospital(List<Room> rooms, Database database, List<Equipment> equipment) {
         this.rooms = rooms;
         this.database = database;
@@ -52,12 +53,11 @@ public class Hospital {
 
 
         return "Hospital" + "\n" +
-                "Rooms=" + "\n" + rooms  + "\n" +
-                ", Database= "  + "\n" + database  + "\n" +
-                ", Equipment= "  + "\n" + equipment  + "\n" +
+                "Rooms=" + "\n" + rooms + "\n" +
+                ", Database= " + "\n" + database + "\n" +
+                ", Equipment= " + "\n" + equipment + "\n" +
                 '}';
     }
-
 
 
 }

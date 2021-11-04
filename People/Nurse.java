@@ -6,7 +6,7 @@ import Room.IntensiveCareUnit;
 
 public class Nurse extends Employee {
 
-    public Nurse(){
+    public Nurse() {
         super();
     }
 
@@ -18,19 +18,16 @@ public class Nurse extends Employee {
         super(name, surname, ID);
     }
 
-    public void movePatient(Patient patient, Room room)
-    {
-        if(patient.getLocationRoom()!=null){
-            if(patient.getLocationRoom() instanceof Bedroom)
-            {
+    public void movePatient(Patient patient, Room room) {
+        if (patient.getLocationRoom() != null) {
+            if (patient.getLocationRoom() instanceof Bedroom) {
                 ((Bedroom) patient.getLocationRoom()).getBed().setInUse(false);
             }
         }
 
 
         patient.setLocationRoom(room);
-        if(room instanceof Bedroom)
-        {
+        if (room instanceof Bedroom) {
             ((Bedroom) room).getBed().setInUse(true);
         }
 

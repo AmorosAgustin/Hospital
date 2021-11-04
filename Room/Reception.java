@@ -9,6 +9,7 @@ public class Reception extends Room {
     public Reception() {
         super();
     }
+
     public Reception(int roomID) {
         super(roomID);
     }

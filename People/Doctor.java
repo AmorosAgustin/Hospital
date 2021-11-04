@@ -3,7 +3,7 @@ package People;
 public class Doctor extends Employee {
 
 
-    public Doctor(){
+    public Doctor() {
         super();
     }
 
@@ -16,9 +16,7 @@ public class Doctor extends Employee {
     }
 
 
-
-    public void performSurgery()
-    {
+    public void performSurgery() {
         System.out.println("Surgery finished");
     }
 }

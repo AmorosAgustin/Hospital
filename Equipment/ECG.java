@@ -14,8 +14,8 @@ public class ECG extends Equipment {
         this.state = false;
     }
 
-    public ECG(boolean working, Room locationRoom, int ID, String type,boolean state) {
-        super(working,locationRoom,ID,type);
+    public ECG(boolean working, Room locationRoom, int ID, String type, boolean state) {
+        super(working, locationRoom, ID, type);
         this.state = state;
     }
 
@@ -28,21 +28,21 @@ public class ECG extends Equipment {
         this.state = state;
     }
 
-    public void turnOn(){
+    public void turnOn() {
         this.setState(true);
     }
 
-    public void turnOff(){
+    public void turnOff() {
         this.setState(false);
     }
 
     @Override
     public String toString() {
-        return  "Working=" + this.isWorking() +
+        return "Working=" + this.isWorking() +
                 ", Room ID= " + this.getLocationRoom().getRoomID() +
                 ", Equipment ID=" + this.getID() +
-                ", Type='" + this.getType() + '\'' +"State=" + state +
-                 "\n";
+                ", Type='" + this.getType() + '\'' + "State=" + state +
+                "\n";
     }
 
     @Override

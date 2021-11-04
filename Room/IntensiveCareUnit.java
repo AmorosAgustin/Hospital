@@ -8,11 +8,11 @@ import java.util.List;
 
 public class IntensiveCareUnit extends Bedroom {
 
-    public IntensiveCareUnit(){
+    public IntensiveCareUnit() {
         super();
     }
 
-    public IntensiveCareUnit(int roomID){
+    public IntensiveCareUnit(int roomID) {
         super(roomID);
     }
 

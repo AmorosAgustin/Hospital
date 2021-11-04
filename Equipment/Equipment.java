@@ -10,18 +10,18 @@ public abstract class Equipment {
     private String type;
 
 
-    public Equipment(){
-        this.working=true;
-        this.locationRoom=null;
+    public Equipment() {
+        this.working = true;
+        this.locationRoom = null;
         this.ID = 000000;
         this.type = "empty";
     }
 
-    public Equipment(boolean working, Room locationRoom, int ID,String type) {
+    public Equipment(boolean working, Room locationRoom, int ID, String type) {
         this.working = working;
         this.locationRoom = locationRoom;
         this.ID = ID;
-        this.type=type;
+        this.type = type;
     }
 
     public boolean isWorking() {
@@ -55,9 +55,10 @@ public abstract class Equipment {
     public void setType(String type) {
         this.type = type;
     }
+
     @Override
     public String toString() {
-        return  "Working=" + working +
+        return "Working=" + working +
                 ", Room ID= " + locationRoom.getRoomID() +
                 ", Equipment ID=" + ID +
                 ", Type='" + type + '\''

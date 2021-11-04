@@ -5,7 +5,7 @@ import Hospital.Hospital;
 public class Receptionist extends Employee {
 
 
-    public Receptionist(){
+    public Receptionist() {
         super();
     }
 
@@ -18,27 +18,25 @@ public class Receptionist extends Employee {
     }
 
 
-    public void addToPatientList(Patient patient, Hospital hospital)
-    {
+    public void addToPatientList(Patient patient, Hospital hospital) {
         hospital.getDatabase().getPatientList().add(patient);
 
 
     }
-    public void removeFromPatientList(Patient patient, Hospital hospital)
-    {
+
+    public void removeFromPatientList(Patient patient, Hospital hospital) {
         hospital.getDatabase().getPatientList().remove(patient);
 
 
     }
 
-    public void addToEmployeeList(Employee employee, Hospital hospital)
-    {
+    public void addToEmployeeList(Employee employee, Hospital hospital) {
         hospital.getDatabase().getEmployeeList().add(employee);
 
 
     }
-    public void removeFromEmployeeList(Employee employee, Hospital hospital)
-    {
+
+    public void removeFromEmployeeList(Employee employee, Hospital hospital) {
         hospital.getDatabase().getEmployeeList().remove(employee);
 
 
