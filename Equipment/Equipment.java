@@ -2,6 +2,8 @@ package Equipment;
 
 import Room.Room;
 
+import java.util.Objects;
+
 public abstract class Equipment {
 
     private boolean working;
@@ -65,4 +67,17 @@ public abstract class Equipment {
                 + "\n";
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Equipment equipment = (Equipment) o;
+        return working == equipment.working && ID == equipment.ID && Objects.equals(locationRoom, equipment.locationRoom) && Objects.equals(type, equipment.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(working, locationRoom, ID, type);
+    }
 }

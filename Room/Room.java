@@ -5,6 +5,7 @@ import People.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Room {
 
@@ -59,5 +60,18 @@ public class Room {
     public String toString() {
         return " Room ID= " + roomID +
                 ", Assigned Employee= " + assignedEmployee;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return roomID == room.roomID && Objects.equals(assignedEmployee, room.assignedEmployee);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(assignedEmployee, roomID);
     }
 }
