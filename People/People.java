@@ -32,6 +32,8 @@ public abstract class People {
         this.name = name;
     }
 
+
+
     @Override
     public String toString() {
         return "People{" +

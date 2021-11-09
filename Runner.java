@@ -124,6 +124,10 @@ public class Runner {
         nurse1.movePatient(patient1, reception1);
         patient1.leave();
         System.out.println(hospital1.toString());
+        doctor1.diagnosePatient(patient3);
+        doctor1.treatPatient(patient3);
+        patient3.printMedicalHistory();
+
 
     }
 }
