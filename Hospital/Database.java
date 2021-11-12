@@ -1,26 +1,33 @@
 package Hospital;
 
+import Medicine.Medicine;
 import People.Employee;
 import People.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import Exception.PersonNotInDatabaseException;
+import Exception.PersonAlreadyInDatabaseException;
 
 public class Database {
 
 
     private List<Employee> employeeList;
     private List<Patient> patientList;
+    private List<Medicine> medicineList;
 
-
-    public Database(ArrayList<Employee> employeeList, ArrayList<Patient> patientList) {
+    public Database(ArrayList<Employee> employeeList, ArrayList<Patient> patientList, ArrayList<Medicine> medicineList) {
         this.employeeList = employeeList;
         this.patientList = patientList;
+        this.medicineList = medicineList;
     }
 
     public Database() {
         this.employeeList = new ArrayList<Employee>();
         this.patientList = new ArrayList<Patient>();
+        this.medicineList = new ArrayList<Medicine>();
 
     }
 
@@ -41,7 +48,7 @@ public class Database {
         this.patientList = patientList;
     }
 
-    public Patient searchPatientInsurance(int insuranceNumber) {
+    public Patient searchPatientInsurance(String insuranceNumber) throws PersonNotInDatabaseException {
         for (int i = 0; i < this.patientList.size(); i++) {
 
             if (this.patientList.get(i).getInsuranceNumber() == insuranceNumber) {
@@ -49,13 +56,13 @@ public class Database {
                 return this.patientList.get(i);
             }
         }
-        System.out.println("There are no patients with the introduced insurance number");
-        return null;
+        throw new PersonNotInDatabaseException("There are no patients with the introduced insurance number");
+
 
     }
 
 
-    public Employee searchEmployeeID(int ID) {
+    public Employee searchEmployeeID(int ID) throws PersonNotInDatabaseException {
         for (int i = 0; i < this.employeeList.size(); i++) {
 
             if (this.employeeList.get(i).getID() == ID) {
@@ -63,17 +70,35 @@ public class Database {
                 return this.employeeList.get(i);
             }
         }
-        System.out.println("There are no employee with the introduced ID number");
-        return null;
+        throw new PersonNotInDatabaseException("There are no employee with the introduced ID number");
 
     }
 
+    public List<Medicine> getMedicineList() {
+        return medicineList;
+    }
+
+    public void setMedicineList(List<Medicine> medicineList) {
+        this.medicineList = medicineList;
+    }
 
     @Override
     public String toString() {
-        return "EmployeeList = " + "\n" + employeeList + "\n" +
-                ", PatientList = " + "\n" + patientList;
+        return "Employee List = " + "\n" + employeeList + "\n" +
+                ", Patient List = " + "\n" + patientList + "\n" +
+                ", Medicine List = " + "\n" + medicineList;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Database database = (Database) o;
+        return Objects.equals(employeeList, database.employeeList) && Objects.equals(patientList, database.patientList) && Objects.equals(medicineList, database.medicineList);
+    }
 
+    @Override
+    public int hashCode() {
+        return employeeList.hashCode() * patientList.hashCode() * medicineList.hashCode();
+    }
 }

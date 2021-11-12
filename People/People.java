@@ -1,5 +1,7 @@
 package People;
 
+import Room.Reception;
+
 import java.util.Objects;
 
 public abstract class People {
@@ -32,7 +34,9 @@ public abstract class People {
         this.name = name;
     }
 
+    public abstract void arrive(Reception reception);
 
+    public abstract void leave();
 
     @Override
     public String toString() {
@@ -52,6 +56,6 @@ public abstract class People {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname);
+        return name.hashCode() * surname.hashCode();
     }
 }

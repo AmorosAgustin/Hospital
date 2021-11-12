@@ -1,8 +1,7 @@
 package Room;
 
-import Equipment.Bed;
+import EquipmentAndMachinery.Bed;
 import People.Employee;
-import People.Patient;
 
 import java.util.List;
 

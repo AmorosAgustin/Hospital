@@ -59,7 +59,7 @@ public class Room {
     @Override
     public String toString() {
         return " Room ID= " + roomID +
-                ", Assigned Employee= " + assignedEmployee;
+                ", Assigned Employee= " + assignedEmployee + "";
     }
 
     @Override

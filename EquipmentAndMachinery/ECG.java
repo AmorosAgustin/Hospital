@@ -1,47 +1,25 @@
-package Equipment;
+package EquipmentAndMachinery;
 
 import Room.Room;
 
-import java.util.Objects;
+public class ECG extends Machinery {
 
-public class ECG extends Equipment {
-
-
-    private boolean state;
 
     public ECG() {
         super();
-        this.state = false;
     }
 
     public ECG(boolean working, Room locationRoom, int ID, String type, boolean state) {
-        super(working, locationRoom, ID, type);
-        this.state = state;
+        super(working, locationRoom, ID, type, state);
     }
 
-
-    public boolean isState() {
-        return state;
-    }
-
-    public void setState(boolean state) {
-        this.state = state;
-    }
-
-    public void turnOn() {
-        this.setState(true);
-    }
-
-    public void turnOff() {
-        this.setState(false);
-    }
 
     @Override
     public String toString() {
         return "Working=" + this.isWorking() +
                 ", Room ID= " + this.getLocationRoom().getRoomID() +
                 ", Equipment ID=" + this.getID() +
-                ", Type='" + this.getType() + '\'' + "State=" + state +
+                ", Type='" + this.getType() + '\'' + ",  In Use=" + this.isInUse() +
                 "\n";
     }
 
@@ -49,12 +27,16 @@ public class ECG extends Equipment {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         ECG ecg = (ECG) o;
-        return isState() == ecg.isState();
+        return super.equals(o);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isState());
+
+        return super.hashCode();
     }
+
+
 }

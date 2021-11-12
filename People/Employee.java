@@ -1,15 +1,22 @@
 package People;
 
+import Hospital.Hospital;
+import Room.Reception;
+import Room.Room;
+
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Employee extends People {
 
 
     private int ID;
+    private Hospital assignedHospital;
+    private Room locationRoom;
 
     public Employee() {
         super();
-        this.ID = 000000;
+        this.ID = 0;
     }
 
     public Employee(int ID) {
@@ -22,6 +29,21 @@ public abstract class Employee extends People {
         this.ID = ID;
     }
 
+
+    public Employee(String name, String surname, int ID, Hospital assignedHospital) {
+        super(name, surname);
+        this.ID = ID;
+        this.assignedHospital = assignedHospital;
+    }
+
+    public Employee(String name, String surname, int ID, Hospital assignedHospital, Room locationRoom) {
+        super(name, surname);
+        this.ID = ID;
+        this.assignedHospital = assignedHospital;
+        this.locationRoom = locationRoom;
+    }
+
+
     public int getID() {
         return ID;
     }
@@ -30,12 +52,46 @@ public abstract class Employee extends People {
         this.ID = ID;
     }
 
+    public Hospital getAssignedHospital() {
+        return assignedHospital;
+    }
+
+    public void setAssignedHospital(Hospital assignedHospital) {
+        this.assignedHospital = assignedHospital;
+    }
+
+
+    public void arrive(Reception reception) {
+        this.locationRoom = reception;
+
+    }
+
+    public void leave() {
+        this.locationRoom = null;
+
+    }
+
+
+    public Room getLocationRoom() {
+        return locationRoom;
+    }
+
+    public void setLocationRoom(Room locationRoom) {
+        this.locationRoom = locationRoom;
+    }
 
     @Override
     public String toString() {
-        return "Name= '" + this.getName() + '\'' +
-                ", Surname= '" + this.getSurname() + '\'' +
-                ", ID= " + ID + "\n";
+        if (this.locationRoom != null) {
+
+            return "Name= " + this.getName() + '\'' +
+                    ", Surname= '" + this.getSurname() + '\'' +
+                    ", ID= " + ID + ", Room ID= " + locationRoom.getRoomID();
+        } else {
+            return "Name= " + this.getName() + '\'' +
+                    ", Surname= '" + this.getSurname() + '\'' +
+                    ", ID= " + ID + ", Room ID= Not in a room right now";
+        }
     }
 
     @Override
@@ -44,11 +100,14 @@ public abstract class Employee extends People {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Employee employee = (Employee) o;
-        return ID == employee.ID;
+        return this.ID == employee.ID;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), ID);
+
+        return super.hashCode() * ID;
     }
+
+
 }

@@ -1,6 +1,8 @@
-package Equipment;
+package EquipmentAndMachinery;
 
 import Room.Room;
+
+import java.util.Objects;
 
 public class Bed extends Equipment {
 
@@ -13,8 +15,8 @@ public class Bed extends Equipment {
         this.inclination = 0;
     }
 
-    public Bed(boolean working, Room locationRoom, int ID, boolean inUse, String type, int inclination) {
-        super(working, locationRoom, ID, type);
+    public Bed(boolean working, Room locationRoom, int ID, boolean inUse, int inclination) {
+        super(working, locationRoom, ID, "Bed");
         this.inUse = inUse;
         if (inclination <= 4)
             this.inclination = inclination;
@@ -41,4 +43,18 @@ public class Bed extends Equipment {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Bed bed = (Bed) o;
+        return super.equals(o) && inUse == bed.inUse && inclination == bed.inclination;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return super.hashCode() + inclination + ((inUse) ? 0 : 1);
+    }
 }
