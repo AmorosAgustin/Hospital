@@ -1,17 +1,37 @@
 package com.solvd.hospital.util;
-import com.solvd.hospital.model.Exception.*;
-import com.solvd.hospital.model.EquipmentAndMachinery.*;
-import com.solvd.hospital.model.Hospital.*;
-import com.solvd.hospital.model.Medicine.*;
-import com.solvd.hospital.model.People.*;
-import com.solvd.hospital.model.Room.*;
 
+import com.solvd.hospital.model.EquipmentAndMachinery.Bed;
+import com.solvd.hospital.model.EquipmentAndMachinery.ECG;
+import com.solvd.hospital.model.EquipmentAndMachinery.Scalpel;
+import com.solvd.hospital.model.Exception.ItemNotAvailableException;
+import com.solvd.hospital.model.Exception.ItemNotFoundException;
+import com.solvd.hospital.model.Exception.PersonAlreadyInDatabaseException;
+import com.solvd.hospital.model.Exception.PersonNotInDatabaseException;
+import com.solvd.hospital.model.Generic.printObjectToString;
+import com.solvd.hospital.model.Hospital.Hospital;
+import com.solvd.hospital.model.Medicine.Medicine;
+import com.solvd.hospital.model.People.*;
+import com.solvd.hospital.model.Room.Bedroom;
+import com.solvd.hospital.model.Room.ExamRoom;
+import com.solvd.hospital.model.Room.IntensiveCareUnit;
+import com.solvd.hospital.model.Room.Reception;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.ArrayList;
 
 
 public class Runner {
+
+
+
+    private static final Logger log= LogManager.getLogger(Runner.class);
+
+
+
     public static void main(String[] args) throws ItemNotFoundException, PersonAlreadyInDatabaseException, PersonAlreadyInDatabaseException {
+
+        log.info("Here i create my hospital with its patients, employees, equipment, machinery and rooms");
 
         Hospital hospital1 = new Hospital();
 
@@ -174,6 +194,14 @@ public class Runner {
         } catch (PersonNotInDatabaseException e) {
             System.out.println(e);
         }
+
+
+        printObjectToString<Object> printer = new printObjectToString<>();
+
+        log.info("\nHere i print some objects using my generic print class \n");
+        printer.print(doctor1);
+        printer.print(patient2);
+        printer.print(bed2);
 
 
     }
