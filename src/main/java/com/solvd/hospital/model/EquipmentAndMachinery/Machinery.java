@@ -1,8 +1,8 @@
-package com.solvd.hospital.model.EquipmentAndMachinery;
+package com.solvd.hospital.model.equipmentAndMachinery;
 
-import com.solvd.hospital.model.Exception.MachineryBrokenException;
+import com.solvd.hospital.model.exception.MachineryBrokenException;
 
-import com.solvd.hospital.model.Room.Room;
+import com.solvd.hospital.model.room.Room;
 
 public abstract class Machinery implements Usable {
     private boolean working;

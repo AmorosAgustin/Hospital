@@ -1,13 +1,13 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.EquipmentAndMachinery.Equipment;
-import com.solvd.hospital.model.Hospital.Hospital;
-import com.solvd.hospital.model.Medicine.Medicine;
-import com.solvd.hospital.model.Room.Room;
-import com.solvd.hospital.model.Room.Bedroom;
-import com.solvd.hospital.model.Exception.ItemNotFoundException;
-import com.solvd.hospital.model.Exception.PersonNotInDatabaseException;
-import com.solvd.hospital.model.Exception.ItemNotAvailableException;
+import com.solvd.hospital.model.equipmentAndMachinery.Equipment;
+import com.solvd.hospital.model.hospital.Hospital;
+import com.solvd.hospital.model.medicine.Medicine;
+import com.solvd.hospital.model.room.Room;
+import com.solvd.hospital.model.room.Bedroom;
+import com.solvd.hospital.model.exception.ItemNotFoundException;
+import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
+import com.solvd.hospital.model.exception.ItemNotAvailableException;
 
 import java.util.List;
 import java.util.Objects;

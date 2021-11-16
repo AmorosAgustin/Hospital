@@ -1,9 +1,9 @@
-package com.solvd.hospital.model.Hospital;
+package com.solvd.hospital.model.hospital;
 
-import com.solvd.hospital.model.Exception.PersonNotInDatabaseException;
-import com.solvd.hospital.model.Medicine.Medicine;
-import com.solvd.hospital.model.People.Employee;
-import com.solvd.hospital.model.People.Patient;
+import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
+import com.solvd.hospital.model.medicine.Medicine;
+import com.solvd.hospital.model.people.Employee;
+import com.solvd.hospital.model.people.Patient;
 
 import java.util.ArrayList;
 import java.util.List;

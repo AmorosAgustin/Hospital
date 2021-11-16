@@ -1,4 +1,4 @@
-package com.solvd.hospital.model.Medicine;
+package com.solvd.hospital.model.medicine;
 
 import java.util.Objects;
 

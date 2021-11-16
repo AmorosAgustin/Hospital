@@ -1,6 +1,6 @@
-package com.solvd.hospital.model.Exception;
+package com.solvd.hospital.model.exception;
 
-public class ItemNotFoundException extends Exception {
+public class ItemNotFoundException extends RuntimeException {
 
     public ItemNotFoundException(String errorMessage) {
         super(errorMessage);

@@ -1,16 +1,16 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.Exception.ItemNotAvailableException;
-import com.solvd.hospital.model.Exception.ItemNotFoundException;
-import com.solvd.hospital.model.Exception.PersonNotInDatabaseException;
+import com.solvd.hospital.model.exception.ItemNotAvailableException;
+import com.solvd.hospital.model.exception.ItemNotFoundException;
+import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
 
 import java.util.List;
 
 public interface IAskFor {
 
-    public abstract void askForItem(Employee employee) throws ItemNotFoundException, ItemNotAvailableException;
+     void askForItem(Employee employee) throws ItemNotFoundException, ItemNotAvailableException;
 
-    public abstract List<String> askForMedicalHistory(Employee employee, Patient patient) throws PersonNotInDatabaseException;
+     List<String> askForMedicalHistory(Employee employee, Patient patient) throws PersonNotInDatabaseException;
 
 
 }

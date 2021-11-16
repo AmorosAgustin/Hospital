@@ -1,6 +1,6 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.Room.Reception;
+import com.solvd.hospital.model.room.Reception;
 
 import java.util.Objects;
 

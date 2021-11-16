@@ -1,6 +1,6 @@
-package com.solvd.hospital.model.EquipmentAndMachinery;
+package com.solvd.hospital.model.equipmentAndMachinery;
 
-import com.solvd.hospital.model.Room.Room;
+import com.solvd.hospital.model.room.Room;
 
 public class Bed extends Equipment {
 

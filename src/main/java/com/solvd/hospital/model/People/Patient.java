@@ -1,8 +1,8 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.Medicine.Medicine;
-import com.solvd.hospital.model.Room.Room;
-import com.solvd.hospital.model.Room.Reception;
+import com.solvd.hospital.model.medicine.Medicine;
+import com.solvd.hospital.model.room.Room;
+import com.solvd.hospital.model.room.Reception;
 
 import java.util.ArrayList;
 import java.util.List;

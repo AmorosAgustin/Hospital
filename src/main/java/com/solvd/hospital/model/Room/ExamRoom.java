@@ -1,8 +1,7 @@
-package com.solvd.hospital.model.Room;
+package com.solvd.hospital.model.room;
 
-import com.solvd.hospital.model.EquipmentAndMachinery.Equipment;
-import com.solvd.hospital.model.EquipmentAndMachinery.Machinery;
-import com.solvd.hospital.model.People.Employee;
+import com.solvd.hospital.model.equipmentAndMachinery.Machinery;
+import com.solvd.hospital.model.people.Employee;
 
 import java.util.List;
 import java.util.Objects;

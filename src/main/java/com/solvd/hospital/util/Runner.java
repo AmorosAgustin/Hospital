@@ -1,20 +1,20 @@
 package com.solvd.hospital.util;
 
-import com.solvd.hospital.model.EquipmentAndMachinery.Bed;
-import com.solvd.hospital.model.EquipmentAndMachinery.ECG;
-import com.solvd.hospital.model.EquipmentAndMachinery.Scalpel;
-import com.solvd.hospital.model.Exception.ItemNotAvailableException;
-import com.solvd.hospital.model.Exception.ItemNotFoundException;
-import com.solvd.hospital.model.Exception.PersonAlreadyInDatabaseException;
-import com.solvd.hospital.model.Exception.PersonNotInDatabaseException;
-import com.solvd.hospital.model.Generic.printObjectToString;
-import com.solvd.hospital.model.Hospital.Hospital;
-import com.solvd.hospital.model.Medicine.Medicine;
-import com.solvd.hospital.model.People.*;
-import com.solvd.hospital.model.Room.Bedroom;
-import com.solvd.hospital.model.Room.ExamRoom;
-import com.solvd.hospital.model.Room.IntensiveCareUnit;
-import com.solvd.hospital.model.Room.Reception;
+import com.solvd.hospital.model.equipmentAndMachinery.Bed;
+import com.solvd.hospital.model.equipmentAndMachinery.ECG;
+import com.solvd.hospital.model.equipmentAndMachinery.Scalpel;
+import com.solvd.hospital.model.exception.ItemNotAvailableException;
+import com.solvd.hospital.model.exception.ItemNotFoundException;
+import com.solvd.hospital.model.exception.PersonAlreadyInDatabaseException;
+import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
+import com.solvd.hospital.model.generic.printObjectToString;
+import com.solvd.hospital.model.hospital.Hospital;
+import com.solvd.hospital.model.medicine.Medicine;
+import com.solvd.hospital.model.people.*;
+import com.solvd.hospital.model.room.Bedroom;
+import com.solvd.hospital.model.room.ExamRoom;
+import com.solvd.hospital.model.room.IntensiveCareUnit;
+import com.solvd.hospital.model.room.Reception;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -186,13 +186,13 @@ public class Runner {
             System.out.println(e);
         }
 
-        System.out.println(med1.equals(med2));
+        log.info(med1.equals(med2));
 
         try {
             System.out.println(doctor2.askForMedicalHistory(receptionist1, patient3).toString());
             System.out.println(doctor2.askForMedicalHistory(receptionist1, patient5).toString());
         } catch (PersonNotInDatabaseException e) {
-            System.out.println(e);
+            log.error("PersonNotInDatabaseException", e);
         }
 
 

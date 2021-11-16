@@ -1,12 +1,12 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.EquipmentAndMachinery.Equipment;
-import com.solvd.hospital.model.Exception.ItemNotFoundException;
-import com.solvd.hospital.model.Exception.ItemNotAvailableException;
+import com.solvd.hospital.model.equipmentAndMachinery.Equipment;
+import com.solvd.hospital.model.exception.ItemNotFoundException;
+import com.solvd.hospital.model.exception.ItemNotAvailableException;
 
 
 public interface IGive {
 
-    public abstract Equipment give() throws ItemNotFoundException, ItemNotAvailableException;
+    Equipment give() throws ItemNotFoundException, ItemNotAvailableException;
 
 }

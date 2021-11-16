@@ -1,4 +1,4 @@
-package com.solvd.hospital.model.Generic;
+package com.solvd.hospital.model.generic;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

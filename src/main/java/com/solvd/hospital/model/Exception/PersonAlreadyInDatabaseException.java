@@ -1,6 +1,6 @@
-package com.solvd.hospital.model.Exception;
+package com.solvd.hospital.model.exception;
 
-public class PersonAlreadyInDatabaseException extends Exception {
+public class PersonAlreadyInDatabaseException extends RuntimeException {
     public PersonAlreadyInDatabaseException(String errorMessage) {
         super(errorMessage);
     }

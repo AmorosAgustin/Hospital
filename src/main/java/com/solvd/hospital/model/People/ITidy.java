@@ -1,10 +1,10 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.Room.Bedroom;
+import com.solvd.hospital.model.room.Bedroom;
 
 public interface ITidy {
 
-    public abstract void tidyRoom(Bedroom bedroom);
+     void tidyRoom(Bedroom bedroom);
 
 
 }

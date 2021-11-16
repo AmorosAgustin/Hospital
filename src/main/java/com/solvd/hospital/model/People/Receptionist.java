@@ -1,9 +1,9 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.Exception.PersonAlreadyInDatabaseException;
-import com.solvd.hospital.model.Exception.PersonNotInDatabaseException;
-import com.solvd.hospital.model.Hospital.Hospital;
-import com.solvd.hospital.model.Room.Room;
+import com.solvd.hospital.model.exception.PersonAlreadyInDatabaseException;
+import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
+import com.solvd.hospital.model.hospital.Hospital;
+import com.solvd.hospital.model.room.Room;
 
 import java.util.List;
 

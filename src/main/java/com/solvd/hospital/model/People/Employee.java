@@ -1,8 +1,8 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.Hospital.Hospital;
-import com.solvd.hospital.model.Room.Reception;
-import com.solvd.hospital.model.Room.Room;
+import com.solvd.hospital.model.hospital.Hospital;
+import com.solvd.hospital.model.room.Reception;
+import com.solvd.hospital.model.room.Room;
 
 public abstract class Employee extends People {
 

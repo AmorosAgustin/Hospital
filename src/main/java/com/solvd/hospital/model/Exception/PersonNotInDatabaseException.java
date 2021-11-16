@@ -1,6 +1,6 @@
-package com.solvd.hospital.model.Exception;
+package com.solvd.hospital.model.exception;
 
-public class PersonNotInDatabaseException extends Exception {
+public class PersonNotInDatabaseException extends RuntimeException {
     public PersonNotInDatabaseException(String errorMessage) {
         super(errorMessage);
     }

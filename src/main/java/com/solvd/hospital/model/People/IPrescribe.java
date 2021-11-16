@@ -1,10 +1,10 @@
-package com.solvd.hospital.model.People;
+package com.solvd.hospital.model.people;
 
-import com.solvd.hospital.model.Medicine.Medicine;
+import com.solvd.hospital.model.medicine.Medicine;
 
 public interface IPrescribe {
 
-    public abstract void prescribe(Medicine medicine, Patient patient);
+    void prescribe(Medicine medicine, Patient patient);
 
 
 }
