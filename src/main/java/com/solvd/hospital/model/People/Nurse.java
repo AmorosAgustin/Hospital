@@ -1,13 +1,13 @@
 package com.solvd.hospital.model.people;
 
 import com.solvd.hospital.model.equipmentAndMachinery.Equipment;
-import com.solvd.hospital.model.hospital.Hospital;
-import com.solvd.hospital.model.medicine.Medicine;
-import com.solvd.hospital.model.room.Room;
-import com.solvd.hospital.model.room.Bedroom;
+import com.solvd.hospital.model.exception.ItemNotAvailableException;
 import com.solvd.hospital.model.exception.ItemNotFoundException;
 import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
-import com.solvd.hospital.model.exception.ItemNotAvailableException;
+import com.solvd.hospital.model.hospital.Hospital;
+import com.solvd.hospital.model.medicine.Medicine;
+import com.solvd.hospital.model.room.Bedroom;
+import com.solvd.hospital.model.room.Room;
 
 import java.util.List;
 import java.util.Objects;
@@ -61,7 +61,7 @@ public class Nurse extends Employee implements IPrescribe, ITidy, IAskFor, IGive
     }
 
     @Override
-    public void askForItem(Employee employee) throws ItemNotFoundException, ItemNotAvailableException {
+    public void askForItem(Employee employee) {
 
 
         if ((employee instanceof Receptionist)) {
@@ -74,7 +74,7 @@ public class Nurse extends Employee implements IPrescribe, ITidy, IAskFor, IGive
     }
 
 
-    public List<String> askForMedicalHistory(Employee employee, Patient patient) throws PersonNotInDatabaseException {
+    public List<String> askForMedicalHistory(Employee employee, Patient patient) {
 
         if (employee instanceof Receptionist) {
 
@@ -87,7 +87,7 @@ public class Nurse extends Employee implements IPrescribe, ITidy, IAskFor, IGive
         return null;
     }
 
-    public Equipment give() throws ItemNotFoundException, ItemNotAvailableException {
+    public Equipment give() {
 
         if (this.equipmentInUse == null) {
             throw new ItemNotFoundException("This employee has no items right now");
@@ -117,10 +117,10 @@ public class Nurse extends Employee implements IPrescribe, ITidy, IAskFor, IGive
     public String toString() {
         if (this.equipmentInUse != null)
 
-            return super.toString() + "Equipment in use = " + equipmentInUse.getType() + "\n";
+            return super.toString() + " Using = " + equipmentInUse.getType() + "\n";
         else {
 
-            return super.toString() + "Equipment in use = None" + "\n"
+            return super.toString() + " Using = Nothing" + "\n"
                     ;
         }
     }
@@ -136,6 +136,6 @@ public class Nurse extends Employee implements IPrescribe, ITidy, IAskFor, IGive
 
     @Override
     public int hashCode() {
-        return super.hashCode() * equipmentInUse.hashCode();
+        return super.hashCode() + (equipmentInUse != null ? equipmentInUse.hashCode() : 0);
     }
 }

@@ -4,7 +4,7 @@ import com.solvd.hospital.model.room.Bedroom;
 
 public interface ITidy {
 
-     void tidyRoom(Bedroom bedroom);
+    void tidyRoom(Bedroom bedroom);
 
 
 }

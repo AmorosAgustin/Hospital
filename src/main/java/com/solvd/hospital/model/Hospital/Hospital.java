@@ -65,10 +65,10 @@ public class Hospital {
     public String toString() {
 
 
-        return "Hospital" + "\n" +
-                ", Rooms=" + "\n" + rooms + "\n" +
-                ", Database= " + "\n" + database + "\n" +
-                ", Equipment= " + "\n" + equipment + "\n" + ", Machinery= " + machinery + "\n"
+        return "----------HOSPITAL----------" + "\n" +
+                " ---Rooms---" + "\n" + rooms + "\n" +
+                " ---Database--- " + "\n" + database + "\n" +
+                " ---Equipment--- " + "\n" + equipment + "\n" + " ---Machinery--- " + "\n" + machinery + "\n"
                 ;
     }
 

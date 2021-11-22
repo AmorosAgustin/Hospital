@@ -1,18 +1,22 @@
 package com.solvd.hospital.model.people;
 
 import com.solvd.hospital.model.equipmentAndMachinery.Equipment;
-import com.solvd.hospital.model.hospital.Hospital;
-import com.solvd.hospital.model.medicine.Medicine;
 import com.solvd.hospital.model.exception.ItemNotFoundException;
 import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
-import com.solvd.hospital.model.exception.ItemNotAvailableException;
+import com.solvd.hospital.model.hospital.Hospital;
+import com.solvd.hospital.model.medicine.Medicine;
 import com.solvd.hospital.model.room.Room;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Doctor extends Employee implements IPrescribe, IAskFor, IGive {
+
+    private static final Logger log = LogManager.getLogger(Doctor.class);
+
 
     private String type;
     private Equipment equipmentInUse;
@@ -25,6 +29,7 @@ public class Doctor extends Employee implements IPrescribe, IAskFor, IGive {
 
     public Doctor(int ID) {
         super(ID);
+        this.type = "no specialization";
     }
 
 
@@ -52,7 +57,7 @@ public class Doctor extends Employee implements IPrescribe, IAskFor, IGive {
 
 
     public void performSurgery() {
-        System.out.println("Surgery finished");
+        log.info("Surgery finished");
     }
 
 
@@ -83,16 +88,16 @@ public class Doctor extends Employee implements IPrescribe, IAskFor, IGive {
 
     public void diagnosePatient(Patient patient) {
         Scanner input = new Scanner(System.in);
-        System.out.println("What is the patients illness?\n");
+        log.info("What is the patients illness?\n");
         String illness = input.nextLine();
         patient.setIllness(illness);
         patient.getMedicalHistory().add(illness);
-        System.out.println("Patient 3 has been diagnosed with: " + illness);
+        log.info("Patient 3 has been diagnosed with: " + illness);
 
     }
 
     @Override
-    public void askForItem(Employee employee) throws ItemNotFoundException, ItemNotAvailableException {
+    public void askForItem(Employee employee) {
 
 
         if ((employee instanceof Nurse) && (((Nurse) employee).getEquipmentInUse() != null)) {
@@ -104,7 +109,7 @@ public class Doctor extends Employee implements IPrescribe, IAskFor, IGive {
     }
 
 
-    public List<String> askForMedicalHistory(Employee employee, Patient patient) throws PersonNotInDatabaseException {
+    public List<String> askForMedicalHistory(Employee employee, Patient patient) {
 
         if (employee instanceof Receptionist) {
 
@@ -118,7 +123,7 @@ public class Doctor extends Employee implements IPrescribe, IAskFor, IGive {
     }
 
 
-    public Equipment give() throws ItemNotFoundException {
+    public Equipment give() {
         if (this.equipmentInUse == null) {
             throw new ItemNotFoundException("This employee has no items right now");
         }
@@ -156,6 +161,6 @@ public class Doctor extends Employee implements IPrescribe, IAskFor, IGive {
 
     @Override
     public int hashCode() {
-        return super.hashCode() * type.hashCode() * equipmentInUse.hashCode();
+        return super.hashCode() + (type != null ? type.hashCode() : 0) + (equipmentInUse != null ? equipmentInUse.hashCode() : 0);
     }
 }

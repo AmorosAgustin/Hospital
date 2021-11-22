@@ -43,9 +43,9 @@ public class ExamRoom extends Room {
 
     @Override
     public String toString() {
-        return "ExamRoom{" +
-                "assignedMachinery=" + assignedMachinery +
-                '}';
+        return super.toString() +
+                " Assigned machinery=" + assignedMachinery
+                ;
     }
 
     @Override

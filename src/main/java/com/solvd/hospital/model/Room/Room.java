@@ -1,12 +1,16 @@
 package com.solvd.hospital.model.room;
 
 import com.solvd.hospital.model.people.Employee;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Room {
+
+    private static final Logger log = LogManager.getLogger(Room.class);
 
 
     private List<Employee> assignedEmployee;
@@ -47,7 +51,7 @@ public class Room {
     public void printAssignedEmployeeList() {
 
         if (this.assignedEmployee.size() == 0) {
-            System.out.println("There are no employees assigned to this room");
+            log.info("There are no employees assigned to this room");
         } else {
             for (Employee a : this.assignedEmployee) {
                 a.toString();
@@ -57,8 +61,8 @@ public class Room {
 
     @Override
     public String toString() {
-        return " Room ID= " + roomID +
-                ", Assigned Employee= " + assignedEmployee + "";
+        return "\n Room ID= " + roomID + "\n" +
+                ", --Assigned Employee-- " + "\n" + assignedEmployee;
     }
 
     @Override

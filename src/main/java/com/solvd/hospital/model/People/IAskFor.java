@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface IAskFor {
 
-     void askForItem(Employee employee) throws ItemNotFoundException, ItemNotAvailableException;
+    void askForItem(Employee employee) throws ItemNotFoundException, ItemNotAvailableException;
 
-     List<String> askForMedicalHistory(Employee employee, Patient patient) throws PersonNotInDatabaseException;
+    List<String> askForMedicalHistory(Employee employee, Patient patient) throws PersonNotInDatabaseException;
 
 
 }

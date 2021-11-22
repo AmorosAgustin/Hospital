@@ -74,18 +74,18 @@ public abstract class Equipment implements Usable {
     @Override
     public String toString() {
         if (locationRoom != null) {
-            return "Type=" + type +
+            return "\nType=" + type +
                     ", Room ID= " + locationRoom.getRoomID() +
                     ", Equipment ID=" + ID +
                     ", Available=" + available + '\''
-                    + "\n";
+                    ;
 
         } else {
-            return "Type=" + type +
+            return "\nType=" + type +
                     ", Room ID= Not located in any room" +
                     ", Equipment ID=" + ID +
-                    ", Available=" + available + '\''
-                    + "\n";
+                    ", Available=" + available
+                    ;
 
         }
 

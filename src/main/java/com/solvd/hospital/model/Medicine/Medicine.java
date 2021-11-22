@@ -24,7 +24,7 @@ public class Medicine {
 
     @Override
     public String toString() {
-        return " Name=" + name + "\n"
+        return "\n Name=" + name
                 ;
     }
 
@@ -40,7 +40,7 @@ public class Medicine {
     public int hashCode() {
         int num = 31;
         int res = 1;
-        res = (num * res) + ((name == null) ? 0 : name.hashCode());
+        res = (num * res) + ((name == null) ? name.hashCode() : 0);
         return res;
     }
 }

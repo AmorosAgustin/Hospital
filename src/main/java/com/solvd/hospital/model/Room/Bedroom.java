@@ -49,12 +49,12 @@ public class Bedroom extends Room {
     @Override
     public String toString() {
         if (this.bed != null) {
-            return "Bed ID=" + bed.getID() +
+            return super.toString() + "Bed ID= " + bed.getID() +
                     ", Ready For Use=" + readyForUse
                     ;
         } else {
 
-            return "Bed ID= No bed assigned" +
+            return super.toString() + "Bed ID= No bed assigned" +
                     ", Ready For Use=" + readyForUse
                     ;
         }
@@ -71,6 +71,6 @@ public class Bedroom extends Room {
 
     @Override
     public int hashCode() {
-        return super.hashCode() + (readyForUse ? 0 : 1) + this.bed.hashCode();
+        return super.hashCode() + (readyForUse ? 1 : 0) + this.bed.hashCode();
     }
 }

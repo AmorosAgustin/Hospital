@@ -1,8 +1,12 @@
 package com.solvd.hospital.model.equipmentAndMachinery;
 
 import com.solvd.hospital.model.room.Room;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Bed extends Equipment {
+
+    private static final Logger log = LogManager.getLogger(Bed.class);
 
     private boolean inUse;
     private int inclination;
@@ -19,7 +23,7 @@ public class Bed extends Equipment {
         if (inclination <= 4)
             this.inclination = inclination;
         else {
-            System.out.println("The inclination provided is invalid. It has been set to 0");
+            log.info("The inclination provided is invalid. It has been set to 0");
             this.inclination = 0;
         }
     }
@@ -53,6 +57,6 @@ public class Bed extends Equipment {
     @Override
     public int hashCode() {
 
-        return super.hashCode() + inclination + ((inUse) ? 0 : 1);
+        return super.hashCode() + inclination + ((inUse) ? 1 : 0);
     }
 }

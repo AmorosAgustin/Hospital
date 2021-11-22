@@ -1,14 +1,20 @@
 package com.solvd.hospital.model.people;
 
 import com.solvd.hospital.model.medicine.Medicine;
-import com.solvd.hospital.model.room.Room;
 import com.solvd.hospital.model.room.Reception;
+import com.solvd.hospital.model.room.Room;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Patient extends People {
+
+    private static final Logger log = LogManager.getLogger(Patient.class);
+
+
     private String insuranceNumber;
     private Room locationRoom;
     private String illness;
@@ -70,12 +76,11 @@ public class Patient extends People {
 
     public void arrive(Reception reception) {
         this.locationRoom = reception;
-
+        reception.getPatientsQueue().add(this);
     }
 
     public void leave() {
         this.locationRoom = null;
-
     }
 
     public String getIllness() {
@@ -96,7 +101,7 @@ public class Patient extends People {
 
     public void printMedicalHistory() {
 
-        System.out.println(this.medicalHistory);
+        log.info(this.medicalHistory);
 
     }
 
@@ -114,7 +119,7 @@ public class Patient extends People {
         if (locationRoom != null) {
             return "Name= " + this.getName() + '\'' +
                     ", Surname= '" + this.getSurname() + '\'' +
-                    "Insurance Number= " + insuranceNumber + ", Room= " + locationRoom.getRoomID() + ", Illness= " + illness + ", Prescribed Medicine= " + prescribedMedicine + " \n";
+                    ", Insurance Number= " + insuranceNumber + ", Room= " + locationRoom.getRoomID() + ", Illness= " + illness + ", Prescribed Medicine= " + prescribedMedicine + " \n";
 
         } else {
             return "Name= " + this.getName() + '\'' +
@@ -135,6 +140,6 @@ public class Patient extends People {
 
     @Override
     public int hashCode() {
-        return super.hashCode() + insuranceNumber.hashCode() + locationRoom.hashCode() + illness.hashCode() + medicalHistory.hashCode() + prescribedMedicine.hashCode();
+        return super.hashCode() + insuranceNumber.hashCode() + (locationRoom == null ? 0 : locationRoom.hashCode()) + illness.hashCode() + medicalHistory.hashCode() + (prescribedMedicine == null ? 0 : prescribedMedicine.hashCode());
     }
 }

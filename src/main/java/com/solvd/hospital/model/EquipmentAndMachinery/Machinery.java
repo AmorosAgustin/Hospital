@@ -1,10 +1,15 @@
 package com.solvd.hospital.model.equipmentAndMachinery;
 
 import com.solvd.hospital.model.exception.MachineryBrokenException;
-
 import com.solvd.hospital.model.room.Room;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public abstract class Machinery implements Usable {
+public abstract class Machinery implements Usable, Repairable {
+
+    private static final Logger log = LogManager.getLogger(Machinery.class);
+
+
     private boolean working;
     private Room locationRoom;
     private int ID;
@@ -68,9 +73,18 @@ public abstract class Machinery implements Usable {
         this.inUse = inUse;
     }
 
+    public void repair() {
+        if (this.isWorking()) {
+            log.info("This machine is already in good state");
+        } else {
+            this.setWorking(true);
+            log.info("The scalpel has been repaired successfully");
+        }
+
+    }
 
     @Override
-    public void use() throws MachineryBrokenException {
+    public void use() {
 
         if (!this.working) {
             throw new MachineryBrokenException("This machine is broken, please contact an engineer");

@@ -2,7 +2,9 @@ package com.solvd.hospital.model.people;
 
 import com.solvd.hospital.model.exception.PersonAlreadyInDatabaseException;
 import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
+import com.solvd.hospital.model.exception.QueueIsEmptyException;
 import com.solvd.hospital.model.hospital.Hospital;
+import com.solvd.hospital.model.room.Reception;
 import com.solvd.hospital.model.room.Room;
 
 import java.util.List;
@@ -27,8 +29,19 @@ public class Receptionist extends Employee {
         super(name, surname, ID, assignedHospital, locationRoom);
     }
 
+    public void assignNextPatientToRoom(Room room) {
 
-    public void addToPatientList(Patient patient) throws PersonAlreadyInDatabaseException {
+        if (this.getLocationRoom() instanceof Reception)
+
+            if (((Reception) this.getLocationRoom()).getPatientsQueue().peek() != null) {
+                ((Reception) this.getLocationRoom()).getPatientsQueue().peek().setLocationRoom(room);
+                ((Reception) this.getLocationRoom()).getPatientsQueue().remove();
+            } else throw new QueueIsEmptyException("The queue is empty");
+
+
+    }
+
+    public void addToPatientList(Patient patient) {
         if (this.getAssignedHospital().getDatabase().getPatientList().contains(patient)) {
             throw new PersonAlreadyInDatabaseException("This patient is already registered");
         } else {
@@ -38,7 +51,7 @@ public class Receptionist extends Employee {
 
     }
 
-    public void removeFromPatientList(Patient patient) throws PersonNotInDatabaseException {
+    public void removeFromPatientList(Patient patient) {
 
         if (!(this.getAssignedHospital().getDatabase().getPatientList().contains(patient))) {
             throw new PersonNotInDatabaseException("This patient is not registered in the database");
@@ -49,7 +62,7 @@ public class Receptionist extends Employee {
 
     }
 
-    public void addToEmployeeList(Employee employee) throws PersonAlreadyInDatabaseException {
+    public void addToEmployeeList(Employee employee) {
         if (this.getAssignedHospital().getDatabase().getEmployeeList().contains(employee)) {
             throw new PersonAlreadyInDatabaseException("This employee is already registered");
         } else {
@@ -58,7 +71,7 @@ public class Receptionist extends Employee {
 
     }
 
-    public void removeFromEmployeeList(Employee employee) throws PersonNotInDatabaseException {
+    public void removeFromEmployeeList(Employee employee) {
         if (!(this.getAssignedHospital().getDatabase().getEmployeeList().contains(employee))) {
             throw new PersonNotInDatabaseException("This employee is not registered in the database");
         } else {
@@ -68,7 +81,7 @@ public class Receptionist extends Employee {
     }
 
 
-    public List<String> getPatientMedicalHistory(Patient patient) throws PersonNotInDatabaseException {
+    public List<String> getPatientMedicalHistory(Patient patient) {
 
         if (this.getAssignedHospital().getDatabase().getPatientList().contains(patient))
             return patient.getMedicalHistory();

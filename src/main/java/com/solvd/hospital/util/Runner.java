@@ -7,7 +7,9 @@ import com.solvd.hospital.model.exception.ItemNotAvailableException;
 import com.solvd.hospital.model.exception.ItemNotFoundException;
 import com.solvd.hospital.model.exception.PersonAlreadyInDatabaseException;
 import com.solvd.hospital.model.exception.PersonNotInDatabaseException;
-import com.solvd.hospital.model.generic.printObjectToString;
+import com.solvd.hospital.model.generic.CompareObjectField;
+import com.solvd.hospital.model.generic.MoveObject;
+import com.solvd.hospital.model.generic.PrintObjectToString;
 import com.solvd.hospital.model.hospital.Hospital;
 import com.solvd.hospital.model.medicine.Medicine;
 import com.solvd.hospital.model.people.*;
@@ -15,8 +17,8 @@ import com.solvd.hospital.model.room.Bedroom;
 import com.solvd.hospital.model.room.ExamRoom;
 import com.solvd.hospital.model.room.IntensiveCareUnit;
 import com.solvd.hospital.model.room.Reception;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
@@ -24,12 +26,10 @@ import java.util.ArrayList;
 public class Runner {
 
 
-
-    private static final Logger log= LogManager.getLogger(Runner.class);
-
+    private static final Logger log = LogManager.getLogger(Runner.class);
 
 
-    public static void main(String[] args) throws ItemNotFoundException, PersonAlreadyInDatabaseException, PersonAlreadyInDatabaseException {
+    public static void main(String[] args) {
 
         log.info("Here i create my hospital with its patients, employees, equipment, machinery and rooms");
 
@@ -129,6 +129,9 @@ public class Runner {
         patient3.arrive(reception1);
         patient4.arrive(reception1);
 
+        log.info("\n" + reception1);
+
+
         try {
             receptionist1.addToPatientList(patient1);
             receptionist1.addToPatientList(patient2);
@@ -136,13 +139,13 @@ public class Runner {
             receptionist1.addToPatientList(patient4);
             receptionist1.addToPatientList(patient4);//I add patient4 to throw an exception
         } catch (PersonAlreadyInDatabaseException e) {
-            System.out.println(e);
+            log.info(e);
         }
 
         try {
             receptionist1.removeFromEmployeeList(doctor1);
         } catch (PersonNotInDatabaseException e) {
-            System.out.println(e);
+            log.info(e);
         }
 
 
@@ -152,8 +155,9 @@ public class Runner {
         receptionist1.addToEmployeeList(nurse2);
         receptionist1.addToEmployeeList(receptionist1);
 
-        nurse1.movePatient(patient1, bedroom1);
-        nurse2.movePatient(patient2, bedroom2);
+        receptionist1.assignNextPatientToRoom(bedroom1);
+        receptionist1.assignNextPatientToRoom(bedroom2);
+        log.info("\n" + reception1);
         nurse1.movePatient(patient3, examRoom1);
         nurse2.movePatient(patient4, intensiveCareUnit1);
 
@@ -163,7 +167,8 @@ public class Runner {
         nurse1.movePatient(patient1, reception1);
         patient1.leave();
         doctor1.prescribe(med2, patient3);
-        System.out.println(hospital1.toString());
+
+        log.info("\n" + hospital1);
 
 
         doctor1.diagnosePatient(patient3);
@@ -172,37 +177,62 @@ public class Runner {
         doctor1.prescribe(med1, patient3);
         try {
             doctor1.askForItem(nurse2);
-            System.out.println(doctor1.getEquipmentInUse().getType());
+            log.info(doctor1.getEquipmentInUse().getType());
 
         } catch (ItemNotFoundException | ItemNotAvailableException e) {
-            System.out.println(e);
+            log.info(e);
         }
 
         try {
             doctor1.askForItem(nurse1);
-            System.out.println(doctor1.getEquipmentInUse().getType());
+            log.info(doctor1.getEquipmentInUse().getType());
 
         } catch (ItemNotFoundException | ItemNotAvailableException e) {
-            System.out.println(e);
+            log.info(e);
         }
 
         log.info(med1.equals(med2));
 
         try {
-            System.out.println(doctor2.askForMedicalHistory(receptionist1, patient3).toString());
-            System.out.println(doctor2.askForMedicalHistory(receptionist1, patient5).toString());
+            log.info(doctor2.askForMedicalHistory(receptionist1, patient3).toString());
+            log.info(doctor2.askForMedicalHistory(receptionist1, patient5).toString());
         } catch (PersonNotInDatabaseException e) {
             log.error("PersonNotInDatabaseException", e);
         }
 
 
-        printObjectToString<Object> printer = new printObjectToString<>();
+        PrintObjectToString<Object> printer = new PrintObjectToString<>();
 
         log.info("\nHere i print some objects using my generic print class \n");
         printer.print(doctor1);
         printer.print(patient2);
         printer.print(bed2);
 
+        MoveObject<Object> mover = new MoveObject<>();
+
+        mover.move(patient3, reception1);
+
+        CompareObjectField<Object> comparer = new CompareObjectField<>();
+
+        log.info(doctor1.getID());
+        log.info(doctor2.getID());
+        log.info("comparing doctor1 and doctor2 ID..." + comparer.compareField(doctor1, doctor2, "ID"));
+
+        doctor2.setID(doctor1.getID());
+        log.info(doctor1.getID());
+        log.info(doctor2.getID());
+
+        log.info("comparing doctor1 and doctor2 ID..." + comparer.compareField(doctor1, doctor2, "ID"));
+
+        doctor2.setID(5);
+
+        log.info(patient1.getLocationRoom());
+        log.info(patient2.getLocationRoom());
+
+        log.info("comparing patient1 and patient2 locationRoom..." + comparer.compareField(patient1, patient2, "locationRoom"));
+
 
     }
+
+
 }
