@@ -9,7 +9,7 @@ public class PrintObjectToString<U> {
     public void print(U u) {
 
         log.info("Here i print the object using its toString method");
-        System.out.print(u.toString());
+        log.info(u.toString());
 
     }
 
